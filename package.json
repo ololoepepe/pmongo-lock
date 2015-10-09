@@ -1,0 +1,34 @@
+{
+  "name": "pmongo-lock",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/ololoepepe/pmongo-lock.git"
+  },
+  "keywords": [
+    "mongo",
+    "mongodb",
+    "pmongo",
+    "lock",
+    "locking"
+  ],
+  "author": "Andrey Bogdanov <ololoepepe@gmail.com> (https://ololoepepe.me)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ololoepepe/pmongo-lock/issues"
+  },
+  "homepage": "https://github.com/ololoepepe/pmongo-lock",
+  "devDependencies": {
+    "express": "^4.13.3",
+    "express-cluster": "0.0.4",
+    "promised-mongo": "^1.2.0"
+  },
+  "dependencies": {
+    "uuid": "^2.0.1"
+  }
+}
