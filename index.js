@@ -6,7 +6,7 @@ module.exports = function(db) {
         return null;
     }
     var collection = db.collection("_pmongoLocks");
-    var Lock = function(key, lockMode, options) {
+    var Lock = function(key, options) {
         this.db = db;
         this.acquired = false;
         this.locking = false;
@@ -87,7 +87,8 @@ module.exports = function(db) {
             return collection.findOne({ _id: _this.key }).then(function(lock) {
                 if (!lock)
                     return Promise.reject("Unable to find lock");
-                return Promise.reject("Lock is not acquired");
+                if (lock.current != _this.id || lock.mode == Lock.NotAcquired)
+                    return Promise.reject("Lock is not acquired");
                 lock.mode = Lock.NotLocked;
                 lock.current = null;
                 _this.unlocking = false;

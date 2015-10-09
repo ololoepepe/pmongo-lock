@@ -29,7 +29,7 @@ How does this work under the hood?
 ==================================
 
 First the lock object tries to find an object with the specified key in the collection "_pmongoLocks".
-If does not find one, than it creates it. If another process creates a lock with that key before, then our object catches the error and tries to find the object in the collection again.
+If it does not find one, than it creates it. If another process creates a lock with that key before, then our object catches the error and tries to find the object in the collection again.
 When an object is found, the lock checks if it is in an unlocked state and if the first entry in the queue matches the lock's id. If so, it changes the state to locked and removes the first id from the queue.
 Otherwise, the lock waits for retryDelay milliseconds (10 by default) and then repeats the above step.
 When .unlock() method is called, the lock finds an object with the corresponding id in the collection and sets it's state to unlocked.
